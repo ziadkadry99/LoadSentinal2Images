@@ -49,9 +49,13 @@ def main(checkpoint_path, image_path, save_path, geotiff_save_path, geotiff_res)
         # Check if a resolution is specified for the created GeoTIFF Image and set it
         if geotiff_res:
             if geotiff_res.lower() == 'low':
+                print('Resolution set to low')
                 res = 0
             elif geotiff_res.lower() == 'high':
                 res = 2
+                print('Resolution set to high')
+            else:
+                print('Resolution set to medium')
         image = Load_S2.load_S2(image_path, geotiff_save_path, res=res)
     else:
         image = tiff.imread(image_path)
