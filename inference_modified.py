@@ -45,13 +45,14 @@ def main(checkpoint_path, image_path, save_path, geotiff_save_path, geotiff_res)
 
     # load and preprocess the input image
     if os.path.isdir(image_path):
-        image = Load_S2.load_S2(image_path, geotiff_save_path, res=res)
+        
         # Check if a resolution is specified for the created GeoTIFF Image and set it
         if geotiff_res:
             if geotiff_res.lower() == 'low':
                 res = 0
             elif geotiff_res.lower() == 'high':
                 res = 2
+        image = Load_S2.load_S2(image_path, geotiff_save_path, res=res)
     else:
         image = tiff.imread(image_path)
     pad_r = find_padding(image.shape[0])
