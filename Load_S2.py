@@ -69,7 +69,7 @@ def load_S2(img_data_path, output_path, res=2):
     output.write(band11.read(1), 5)  # SWIR1
     output.write(band12.read(1), 6)  # SWIR2
 
-    size = output.size()
+    
     # Free the file from memory
     output.close()
 
